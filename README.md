@@ -1,16 +1,11 @@
-# CP9 — Exercices débogage web
+# CP9 — Exercices web
 
-Exercices HTML / CSS / JavaScript — formation CDA (CP9).
+**Exo 1 (QCM)** : https://creanmk.github.io/cp9-exos/
 
-**Accès élèves (GitHub Pages) :**  
-`https://VOTRE-COMPTE.github.io/cp9-exos/`
+10 questions · HTML · CSS · JS · API/fetch · correction auto + score.
 
-| Exercice | Lien | Sujet |
-|----------|------|--------|
-| Exo 1 | [exo1/](./exo1/) | HTML, CSS, JS — faire fonctionner un bouton (5 bugs) |
+## Mise à jour GitHub (formateur)
 
-## Déploiement (formateur)
-
-1. Repo public `cp9-exos` sur le compte GitHub **formation**
-2. `git push` depuis `~/Desktop/cp9-exos`
-3. Settings → Pages → branche `main` → dossier `/ (root)`
+1. Repo **creanmk/cp9-exos** → **Add file → Upload files**
+2. Remplacez `index.html`, `style.css`, `script.js`
+3. Commit → Pages se met à jour en ~1 min
