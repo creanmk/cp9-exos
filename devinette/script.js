@@ -1,4 +1,4 @@
-const ANSWERS = { q1: 'a', q2: 'a', q3: 'a', q4: 'a' }
+const ANSWERS = { q1: 'b', q2: 'c', q3: 'b', q4: 'c' }
 
 const form = document.getElementById('quiz')
 const resultEl = document.getElementById('result')
