@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devinette — Projet ???</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <p class="tag">CP9 · Devinette fil rouge</p>
+      <h1>Projet ??? — 4 questions</h1>
+      <p class="intro">Repérez le bug · <strong>4/4 = le concept est dévoilé</strong></p>
+    </header>
+
+    <form id="quiz">
+      <article class="q">
+        <h2>1. HTML — Pourquoi le label ne focus pas l'input ?</h2>
+        <pre><code>&lt;label for="mail-user"&gt;Email&lt;/label&gt;
+&lt;input type="email" id="mail"&gt;</code></pre>
+        <label><input type="radio" name="q1" value="a" required /> Le <code>for</code> ne correspond pas à l'<code>id</code></label>
+        <label><input type="radio" name="q1" value="b" /> Il manque <code>type="text"</code></label>
+        <label><input type="radio" name="q1" value="c" /> Le label doit être après l'input</label>
+      </article>
+
+      <article class="q">
+        <h2>2. CSS — Pourquoi le bouton ne réagit pas au clic ?</h2>
+        <pre><code>#btn-go {
+  pointer-events: none;
+}</code></pre>
+        <label><input type="radio" name="q2" value="a" required /> <code>pointer-events: none</code> bloque les clics</label>
+        <label><input type="radio" name="q2" value="b" /> Il faut <code>cursor: default</code></label>
+        <label><input type="radio" name="q2" value="c" /> Le <code>#</code> ne cible pas un id</label>
+      </article>
+
+      <article class="q">
+        <h2>3. JS — Pourquoi <code>getElementById</code> renvoie <code>null</code> ?</h2>
+        <pre><code>&lt;button id="btn-rush"&gt;Go&lt;/button&gt;
+// JS :
+getElementById('btn-rus')</code></pre>
+        <label><input type="radio" name="q3" value="a" required /> Faute de frappe dans l'id (<code>rus</code> vs <code>rush</code>)</label>
+        <label><input type="radio" name="q3" value="b" /> <code>getElementById</code> ne marche pas sur les boutons</label>
+        <label><input type="radio" name="q3" value="c" /> Il faut <code>querySelector('button')</code> obligatoirement</label>
+      </article>
+
+      <article class="q">
+        <h2>4. JS — Pourquoi le split affiche un mauvais montant ?</h2>
+        <pre><code>// 120 € ÷ 8 personnes → attendu 15 €
+total / (inscrits + 1)</code></pre>
+        <label><input type="radio" name="q4" value="a" required /> On divise par <code>inscrits + 1</code> au lieu de <code>inscrits</code></label>
+        <label><input type="radio" name="q4" value="b" /> Il faut multiplier au lieu de diviser</label>
+        <label><input type="radio" name="q4" value="c" /> JavaScript ne sait pas diviser des euros</label>
+      </article>
+
+      <button type="submit" class="btn">Valider mes réponses</button>
+    </form>
+
+    <section id="result" class="result hidden"></section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

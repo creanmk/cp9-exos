@@ -3,27 +3,155 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Exo 1 — Bouton d'inscription</title>
+  <title>CP9 — Exo 1 · QCM Débogage web</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="card">
-    <h1>Inscription atelier CP9</h1>
-    <p class="consigne">
-      <strong>Consigne :</strong> le bouton « Je m'inscris » doit afficher le message vert de confirmation.<br/>
-      <strong>⚠️ Si rien ne se passe quand vous cliquez : c'est normal.</strong> Le code contient <strong>5 bugs</strong> à corriger dans
-      <code>index.html</code>, <code>style.css</code> et <code>script.js</code> (DevTools F12 → onglet Console pour voir les erreurs).
-    </p>
+  <main class="wrap">
+    <header>
+      <p class="tag">CP9 · Exo 1</p>
+      <h1>QCM — Repérer les bugs web</h1>
+      <p class="intro">
+        10 questions · correction automatique à la fin.<br/>
+        HTML (3) → CSS (3) → JavaScript (2) → API / fetch (2)
+      </p>
+    </header>
 
-    <label for="email">Email</label>
-    <input type="email" id="email" placeholder="prenom.nom@exemple.fr" />
+    <form id="quiz">
+      <!-- HTML -->
+      <section class="block">
+        <h2>HTML — 3 questions</h2>
 
-    <button type="button" id="btn-inscription">Je m'inscris</button>
+        <article class="q" data-q="1">
+          <h3>1. Quel est le bug dans ce code ?</h3>
+          <pre><code>&lt;p&gt;Bienvenue sur CP9
+&lt;button type="button"&gt;Commencer&lt;/button&gt;</code></pre>
+          <label><input type="radio" name="q1" value="a" /> La balise &lt;p&gt; n'est pas fermée</label>
+          <label><input type="radio" name="q1" value="b" /> Le bouton ne peut pas être dans un paragraphe</label>
+          <label><input type="radio" name="q1" value="c" /> Il manque l'attribut <code>id</code> sur le bouton</label>
+        </article>
 
-    <p id="msg-success" class="message-success" hidden>Inscription enregistrée ✓</p>
+        <article class="q" data-q="2">
+          <h3>2. Pourquoi le clic sur le label ne focus pas l'input ?</h3>
+          <pre><code>&lt;label for="email-user"&gt;Email&lt;/label&gt;
+&lt;input type="email" id="email"&gt;</code></pre>
+          <label><input type="radio" name="q2" value="a" /> Le <code>for</code> du label ne correspond pas à l'<code>id</code> de l'input</label>
+          <label><input type="radio" name="q2" value="b" /> Il faut <code>type="text"</code> au lieu de <code>email</code></label>
+          <label><input type="radio" name="q2" value="c" /> Le label doit être après l'input</label>
+        </article>
+
+        <article class="q" data-q="3">
+          <h3>3. Quel bug empêche le script de se charger ?</h3>
+          <pre><code>&lt;script src="app.js"&gt;&lt;script&gt;</code></pre>
+          <label><input type="radio" name="q3" value="a" /> La balise de fermeture est incorrecte (<code>&lt;script&gt;</code> au lieu de <code>&lt;/script&gt;</code>)</label>
+          <label><input type="radio" name="q3" value="b" /> Le fichier doit s'appeler <code>script.js</code></label>
+          <label><input type="radio" name="q3" value="c" /> Il manque l'attribut <code>defer</code></label>
+        </article>
+      </section>
+
+      <!-- CSS -->
+      <section class="block">
+        <h2>CSS — 3 questions</h2>
+
+        <article class="q" data-q="4">
+          <h3>4. Le bouton reste grisé et non cliquable. Cause probable ?</h3>
+          <pre><code>#btn-valider {
+  pointer-events: none;
+  opacity: 0.5;
+}</code></pre>
+          <label><input type="radio" name="q4" value="a" /> <code>pointer-events: none</code> bloque les clics</label>
+          <label><input type="radio" name="q4" value="b" /> <code>opacity</code> désactive toujours un bouton</label>
+          <label><input type="radio" name="q4" value="c" /> Il manque <code>display: block</code></label>
+        </article>
+
+        <article class="q" data-q="5">
+          <h3>5. Le style ne s'applique pas à l'élément. Pourquoi ?</h3>
+          <pre><code>&lt;button id="btn-envoi"&gt;Envoyer&lt;/button&gt;
+
+.btn-envoi {
+  background: green;
+}</code></pre>
+          <label><input type="radio" name="q5" value="a" /> Le HTML utilise un <code>id</code> mais le CSS cible une <code>class</code></label>
+          <label><input type="radio" name="q5" value="b" /> La couleur green n'existe pas en CSS</label>
+          <label><input type="radio" name="q5" value="c" /> Un bouton ne peut pas avoir de couleur de fond</label>
+        </article>
+
+        <article class="q" data-q="6">
+          <h3>6. Le texte déborde du cadre. Quelle propriété manque ou est mal utilisée ?</h3>
+          <pre><code>.card {
+  width: 200px;
+  padding: 20px;
+  /* pas de box-sizing */
+}</code></pre>
+          <label><input type="radio" name="q6" value="a" /> Sans <code>box-sizing: border-box</code>, padding + width dépassent la largeur prévue</label>
+          <label><input type="radio" name="q6" value="b" /> Il faut toujours <code>height: 200px</code></label>
+          <label><input type="radio" name="q6" value="c" /> Le padding interdit d'avoir une width fixe</label>
+        </article>
+      </section>
+
+      <!-- JS -->
+      <section class="block">
+        <h2>JavaScript — 2 questions</h2>
+
+        <article class="q" data-q="7">
+          <h3>7. <code>document.getElementById('btn-inscription')</code> renvoie <code>null</code>. HTML :</h3>
+          <pre><code>&lt;button id="btn-inscripton"&gt;S'inscrire&lt;/button&gt;</code></pre>
+          <label><input type="radio" name="q7" value="a" /> Faute de frappe dans l'<code>id</code> HTML (<code>inscripton</code> vs <code>inscription</code>)</label>
+          <label><input type="radio" name="q7" value="b" /> <code>getElementById</code> ne fonctionne pas sur les boutons</label>
+          <label><input type="radio" name="q7" value="c" /> Le script est exécuté avant le chargement du DOM — toujours</label>
+        </article>
+
+        <article class="q" data-q="8">
+          <h3>8. Cette condition est toujours vraie. Bug ?</h3>
+          <pre><code>if (status = "OPEN") {
+  ouvrirDrop();
+}</code></pre>
+          <label><input type="radio" name="q8" value="a" /> <code>=</code> est une affectation, pas une comparaison — il faut <code>===</code></label>
+          <label><input type="radio" name="q8" value="b" /> Les chaînes ne peuvent pas être comparées en JavaScript</label>
+          <label><input type="radio" name="q8" value="c" /> Il faut <code>if (status == OPEN)</code> sans guillemets</label>
+        </article>
+      </section>
+
+      <!-- API -->
+      <section class="block">
+        <h2>API / fetch — 2 questions</h2>
+
+        <article class="q" data-q="9">
+          <h3>9. L'appel API ne met jamais à jour la page. Code :</h3>
+          <pre><code>fetch('/api/users')
+  .then(res => res.json());
+
+document.getElementById('liste-users')
+  .innerHTML = data.map(u => u.name).join(', ');</code></pre>
+          <label><input type="radio" name="q9" value="a" /> <code>data</code> n'existe pas ici — il faut traiter le résultat <strong>dans</strong> le <code>.then()</code></label>
+          <label><input type="radio" name="q9" value="b" /> <code>fetch</code> ne peut pas appeler <code>/api/users</code></label>
+          <label><input type="radio" name="q9" value="c" /> <code>innerHTML</code> n'accepte pas les tableaux</label>
+        </article>
+
+        <article class="q" data-q="10">
+          <h3>10. Après un fetch réussi, rien ne s'affiche. HTML + JS :</h3>
+          <pre><code>&lt;p id="resultat-api"&gt;&lt;/p&gt;
+
+fetch('/api/status')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('result-api').textContent = data.message;
+  });</code></pre>
+          <label><input type="radio" name="q10" value="a" /> L'<code>id</code> dans le JS (<code>result-api</code>) ne correspond pas au HTML (<code>resultat-api</code>)</label>
+          <label><input type="radio" name="q10" value="b" /> On ne peut pas afficher une réponse API dans un &lt;p&gt;</label>
+          <label><input type="radio" name="q10" value="c" /> Il faut obligatoirement <code>async/await</code> pour toute API</label>
+        </article>
+      </section>
+
+      <div class="actions">
+        <button type="submit" class="btn-primary">Valider — voir mon score</button>
+        <button type="button" id="btn-reset" class="btn-secondary">Recommencer</button>
+      </div>
+    </form>
+
+    <section id="result" class="result hidden" aria-live="polite"></section>
   </main>
 
-  <!-- Bug 3 : faute dans le nom du fichier -->
-  <script src="scritp.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

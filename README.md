@@ -1,11 +1,35 @@
-# CP9 — Exercices web
+# CP9 — Exercices (GitHub Pages)
 
-**Exo 1 (QCM)** : https://creanmk.github.io/cp9-exos/
+**Accès élèves :** https://creanmk.github.io/cp9-exos/
 
-10 questions · HTML · CSS · JS · API/fetch · correction auto + score.
+| Activité | Lien |
+|----------|------|
+| Devinette fil rouge (J1) | [/devinette/](devinette/) |
+| Exo 1 QCM débogage | [/exo1/](exo1/) |
 
-## Mise à jour GitHub (formateur)
+## Publier une mise à jour
 
-1. Repo **creanmk/cp9-exos** → **Add file → Upload files**
-2. Remplacez `index.html`, `style.css`, `script.js`
-3. Commit → Pages se met à jour en ~1 min
+```bash
+cd ~/Desktop/cp9-exos
+git add .
+git commit -m "Mise à jour"
+git push origin main
+```
+
+Pages se met à jour en ~1 min.
+
+## Structure
+
+```
+cp9-exos/
+├── index.html          ← sommaire
+├── devinette/
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   └── drs-logo.png
+└── exo1/
+    ├── index.html
+    ├── style.css
+    └── script.js
+```
