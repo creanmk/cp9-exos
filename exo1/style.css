@@ -164,3 +164,64 @@ button {
   font-size: 0.9rem;
   margin: 0;
 }
+
+.result.winner {
+  text-align: center;
+  border-color: #fbbf24;
+  background: linear-gradient(180deg, #fffbeb, #ffffff);
+  box-shadow: 0 8px 24px rgba(251, 191, 36, 0.25);
+}
+
+.trophy-wrap {
+  margin-bottom: 0.75rem;
+}
+
+.trophy-cup {
+  font-size: 4rem;
+  line-height: 1;
+  margin: 0;
+  animation: trophy-pop 0.6s ease-out, trophy-shine 2s ease-in-out 0.6s infinite;
+  filter: drop-shadow(0 4px 8px rgba(251, 191, 36, 0.45));
+}
+
+.trophy-title {
+  margin: 0.35rem 0 0.15rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #b45309;
+}
+
+.trophy-sub {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  color: #92400e;
+  font-weight: 600;
+}
+
+.result.winner .score {
+  color: #d97706;
+}
+
+@keyframes trophy-pop {
+  0% {
+    transform: scale(0) rotate(-20deg);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.15) rotate(6deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes trophy-shine {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
