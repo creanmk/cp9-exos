@@ -1,0 +1,92 @@
+let countdownSeconds = 300
+
+function formatTime(total) {
+  const m = Math.floor(total / 60)
+  const s = total % 60
+  return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
+}
+
+function startTimer() {
+  const el = document.getElementById('timer')
+  if (!el) return
+
+  el.textContent = formatTime(countdownSeconds)
+  setInterval(() => {
+    if (countdownSeconds > 0) countdownSeconds -= 1
+    el.textContent = formatTime(countdownSeconds)
+  }, 1000)
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const user = DRAuth.requireLogin()
+  if (!user) return
+
+  DRCommon.mountHeader()
+
+  const id = DRCommon.queryId()
+  const outing = await DRApi.getOuting(id)
+  const container = document.getElementById('drop-content')
+
+  if (!outing) {
+    container.innerHTML = '<div class="alert alert-error">Sortie introuvable.</div>'
+    return
+  }
+
+  if (user.role === 'observateur') {
+    container.innerHTML = '<div class="alert alert-warn">Les observateurs ne peuvent pas réserver.</div>'
+    return
+  }
+
+  if (outing.status !== 'DROP_OPEN') {
+    container.innerHTML = `
+      <div class="alert alert-warn">Ce drop n'est pas ouvert (statut : ${DRCommon.statusLabel(outing.status)}).</div>
+      <a class="btn btn-secondary" href="./index.html">Retour</a>
+    `
+    return
+  }
+
+  const booked = outing.maxPlaces - outing.placesLeft
+
+  container.innerHTML = `
+    <p class="tag">Drop live · US-02</p>
+    <h1>${outing.title}</h1>
+    <p class="intro">${outing.totalPrice} € au total · partagés entre les inscrits après fermeture.</p>
+
+    <article class="card drop-live">
+      <p class="timer-label">Temps restant</p>
+      <p class="timer" id="timer">--:--</p>
+      <p class="places-left">Places restantes : <strong id="places-left">${outing.placesLeft}</strong> / ${outing.maxPlaces}</p>
+      <p class="card-meta">${booked} inscrit(s)</p>
+
+      <!-- BUG-01 : bouton sans type="button" → soumet le form et recharge la page -->
+      <form id="reserve-form" action="">
+        <button class="btn btn-drop" id="btn-reserve">Réserver ma place</button>
+      </form>
+    </article>
+
+    <div id="reserve-msg"></div>
+    <a class="btn btn-link" href="./index.html">← Retour aux sorties</a>
+  `
+
+  // BUG-03 : le timer reste à --:-- car drop-timer-bug.js s'exécute trop tôt.
+  // Correction : supprimer drop-timer-bug.js et appeler startTimer() ici.
+  // startTimer()
+
+  // BUG-01 : pas de type="button" → le form se soumet et recharge la page.
+  // Correction attendue : type="button" + handler ci-dessous avec e.preventDefault()
+  /*
+  const form = document.getElementById('reserve-form')
+  const msg = document.getElementById('reserve-msg')
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const result = await DRApi.reserve(id, user)
+    if (result.ok) {
+      msg.innerHTML = '<div class="alert alert-info">Place réservée !</div>'
+      const updated = await DRApi.getOuting(id)
+      document.getElementById('places-left').textContent = updated.placesLeft
+    } else {
+      msg.innerHTML = `<div class="alert alert-error">${result.error}</div>`
+    }
+  })
+  */
+})

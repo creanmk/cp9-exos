@@ -6,6 +6,7 @@
 |----------|------|
 | Devinette fil rouge (J1) | [/devinette/](devinette/) |
 | Exo 1 QCM débogage | [/exo1/](exo1/) |
+| **App DR$ v0.1** | [/app/](app/) |
 
 ## Publier une mise à jour
 
@@ -28,8 +29,16 @@ cp9-exos/
 │   ├── style.css
 │   ├── script.js
 │   └── drs-logo.png
-└── exo1/
-    ├── index.html
-    ├── style.css
-    └── script.js
+├── exo1/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+└── app/                ← fil rouge DR$ v0.1
+    ├── index.html      ← accueil
+    ├── login.html
+    ├── drop.html
+    ├── split.html
+    ├── css/drs.css
+    ├── js/
+    └── data/seed.json
 ```
