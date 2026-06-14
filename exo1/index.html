@@ -26,8 +26,8 @@
           <h3>1. Quel est le bug dans ce code ?</h3>
           <pre><code>&lt;p&gt;Bienvenue sur CP9
 &lt;button type="button"&gt;Commencer&lt;/button&gt;</code></pre>
-          <label><input type="radio" name="q1" value="a" /> La balise &lt;p&gt; n'est pas fermée</label>
-          <label><input type="radio" name="q1" value="b" /> Le bouton ne peut pas être dans un paragraphe</label>
+          <label><input type="radio" name="q1" value="a" /> Le bouton ne peut pas être dans un paragraphe</label>
+          <label><input type="radio" name="q1" value="b" /> La balise &lt;p&gt; n'est pas fermée</label>
           <label><input type="radio" name="q1" value="c" /> Il manque l'attribut <code>id</code> sur le bouton</label>
         </article>
 
@@ -35,9 +35,9 @@
           <h3>2. Pourquoi le clic sur le label ne focus pas l'input ?</h3>
           <pre><code>&lt;label for="email-user"&gt;Email&lt;/label&gt;
 &lt;input type="email" id="email"&gt;</code></pre>
-          <label><input type="radio" name="q2" value="a" /> Le <code>for</code> du label ne correspond pas à l'<code>id</code> de l'input</label>
-          <label><input type="radio" name="q2" value="b" /> Il faut <code>type="text"</code> au lieu de <code>email</code></label>
-          <label><input type="radio" name="q2" value="c" /> Le label doit être après l'input</label>
+          <label><input type="radio" name="q2" value="a" /> Il faut <code>type="text"</code> au lieu de <code>email</code></label>
+          <label><input type="radio" name="q2" value="b" /> Le label doit être après l'input</label>
+          <label><input type="radio" name="q2" value="c" /> Le <code>for</code> du label ne correspond pas à l'<code>id</code> de l'input</label>
         </article>
 
         <article class="q" data-q="3">
@@ -59,9 +59,9 @@
   pointer-events: none;
   opacity: 0.5;
 }</code></pre>
-          <label><input type="radio" name="q4" value="a" /> <code>pointer-events: none</code> bloque les clics</label>
-          <label><input type="radio" name="q4" value="b" /> <code>opacity</code> désactive toujours un bouton</label>
-          <label><input type="radio" name="q4" value="c" /> Il manque <code>display: block</code></label>
+          <label><input type="radio" name="q4" value="a" /> <code>opacity</code> désactive toujours un bouton</label>
+          <label><input type="radio" name="q4" value="b" /> Il manque <code>display: block</code></label>
+          <label><input type="radio" name="q4" value="c" /> <code>pointer-events: none</code> bloque les clics</label>
         </article>
 
         <article class="q" data-q="5">
@@ -71,8 +71,8 @@
 .btn-envoi {
   background: green;
 }</code></pre>
-          <label><input type="radio" name="q5" value="a" /> Le HTML utilise un <code>id</code> mais le CSS cible une <code>class</code></label>
-          <label><input type="radio" name="q5" value="b" /> La couleur green n'existe pas en CSS</label>
+          <label><input type="radio" name="q5" value="a" /> La couleur green n'existe pas en CSS</label>
+          <label><input type="radio" name="q5" value="b" /> Le HTML utilise un <code>id</code> mais le CSS cible une <code>class</code></label>
           <label><input type="radio" name="q5" value="c" /> Un bouton ne peut pas avoir de couleur de fond</label>
         </article>
 
@@ -96,8 +96,8 @@
         <article class="q" data-q="7">
           <h3>7. <code>document.getElementById('btn-inscription')</code> renvoie <code>null</code>. HTML :</h3>
           <pre><code>&lt;button id="btn-inscripton"&gt;S'inscrire&lt;/button&gt;</code></pre>
-          <label><input type="radio" name="q7" value="a" /> Faute de frappe dans l'<code>id</code> HTML (<code>inscripton</code> vs <code>inscription</code>)</label>
-          <label><input type="radio" name="q7" value="b" /> <code>getElementById</code> ne fonctionne pas sur les boutons</label>
+          <label><input type="radio" name="q7" value="a" /> <code>getElementById</code> ne fonctionne pas sur les boutons</label>
+          <label><input type="radio" name="q7" value="b" /> Faute de frappe dans l'<code>id</code> HTML (<code>inscripton</code> vs <code>inscription</code>)</label>
           <label><input type="radio" name="q7" value="c" /> Le script est exécuté avant le chargement du DOM — toujours</label>
         </article>
 
@@ -106,9 +106,9 @@
           <pre><code>if (status = "OPEN") {
   ouvrirDrop();
 }</code></pre>
-          <label><input type="radio" name="q8" value="a" /> <code>=</code> est une affectation, pas une comparaison — il faut <code>===</code></label>
-          <label><input type="radio" name="q8" value="b" /> Les chaînes ne peuvent pas être comparées en JavaScript</label>
-          <label><input type="radio" name="q8" value="c" /> Il faut <code>if (status == OPEN)</code> sans guillemets</label>
+          <label><input type="radio" name="q8" value="a" /> Les chaînes ne peuvent pas être comparées en JavaScript</label>
+          <label><input type="radio" name="q8" value="b" /> Il faut <code>if (status == OPEN)</code> sans guillemets</label>
+          <label><input type="radio" name="q8" value="c" /> <code>=</code> est une affectation, pas une comparaison — il faut <code>===</code></label>
         </article>
       </section>
 
@@ -123,8 +123,8 @@
 
 document.getElementById('liste-users')
   .innerHTML = data.map(u => u.name).join(', ');</code></pre>
-          <label><input type="radio" name="q9" value="a" /> <code>data</code> n'existe pas ici — il faut traiter le résultat <strong>dans</strong> le <code>.then()</code></label>
-          <label><input type="radio" name="q9" value="b" /> <code>fetch</code> ne peut pas appeler <code>/api/users</code></label>
+          <label><input type="radio" name="q9" value="a" /> <code>fetch</code> ne peut pas appeler <code>/api/users</code></label>
+          <label><input type="radio" name="q9" value="b" /> <code>data</code> n'existe pas ici — il faut traiter le résultat <strong>dans</strong> le <code>.then()</code></label>
           <label><input type="radio" name="q9" value="c" /> <code>innerHTML</code> n'accepte pas les tableaux</label>
         </article>
 
@@ -137,9 +137,9 @@ fetch('/api/status')
   .then(data => {
     document.getElementById('result-api').textContent = data.message;
   });</code></pre>
-          <label><input type="radio" name="q10" value="a" /> L'<code>id</code> dans le JS (<code>result-api</code>) ne correspond pas au HTML (<code>resultat-api</code>)</label>
-          <label><input type="radio" name="q10" value="b" /> On ne peut pas afficher une réponse API dans un &lt;p&gt;</label>
-          <label><input type="radio" name="q10" value="c" /> Il faut obligatoirement <code>async/await</code> pour toute API</label>
+          <label><input type="radio" name="q10" value="a" /> On ne peut pas afficher une réponse API dans un &lt;p&gt;</label>
+          <label><input type="radio" name="q10" value="b" /> Il faut obligatoirement <code>async/await</code> pour toute API</label>
+          <label><input type="radio" name="q10" value="c" /> L'<code>id</code> dans le JS (<code>result-api</code>) ne correspond pas au HTML (<code>resultat-api</code>)</label>
         </article>
       </section>
 
