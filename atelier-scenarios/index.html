@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CP9 — US → Scénarios de test</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <p class="tag">CP9 · Atelier · individuel · ~20 min</p>
+      <h1>D'une User Story à des scénarios</h1>
+      <p class="intro">
+        Une US ne se teste pas en <strong>1 scénario nominal</strong> — classifiez des propositions
+        (nominal · erreur · limite · hors scope), puis validez votre couverture.
+      </p>
+    </header>
+
+    <!-- Étape 1 : choix US -->
+    <section id="step-pick" class="step">
+      <h2>1. Choisissez votre User Story</h2>
+      <div class="us-grid" id="us-grid"></div>
+    </section>
+
+    <!-- Étape 2 : classification -->
+    <section id="step-classify" class="step hidden">
+      <button type="button" class="btn-back" id="btn-back">← Changer d'US</button>
+      <div id="us-banner"></div>
+      <h2>2. Classifiez chaque scénario</h2>
+      <p class="hint">Objectif couverture : <strong>2 nominaux · 2 erreurs · 1 limite</strong> (minimum 5 cas de test)</p>
+      <div id="scenario-list"></div>
+      <button type="button" class="btn-primary" id="btn-classify">Valider mes classifications</button>
+    </section>
+
+    <!-- Étape 3 : QCM complétion -->
+    <section id="step-qcm" class="step hidden">
+      <h2>3. Que manque-t-il ?</h2>
+      <p class="intro" id="qcm-intro"></p>
+      <div id="qcm-block"></div>
+      <button type="button" class="btn-primary" id="btn-finish">Voir mon résultat</button>
+    </section>
+
+    <!-- Résultat -->
+    <section id="step-result" class="result hidden" aria-live="polite"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -8,6 +8,7 @@
 | Exo 1 QCM débogage | [/exo1/](exo1/) |
 | **App DR$ v0.1** | [/app/](app/) |
 | Atelier ordre des tests | [/atelier-ordre/](atelier-ordre/) |
+| Atelier US → scénarios | [/atelier-scenarios/](atelier-scenarios/) |
 
 ## Publier une mise à jour
 
@@ -37,7 +38,9 @@ cp9-exos/
 ├── app/                ← fil rouge DR$ v0.1
 │   ├── index.html
 │   └── …
-└── atelier-ordre/      ← atelier 15 min ISTQB
+├── atelier-ordre/
+│   └── …
+└── atelier-scenarios/
     ├── index.html
     ├── style.css
     └── script.js
