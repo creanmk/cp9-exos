@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (!user) return
 
   DRCommon.mountHeader()
+  DRCommon.mountFooter()
 
   const id = DRCommon.queryId()
   const outing = await DRApi.getOuting(id)
@@ -31,16 +32,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       <tr>
         <td>${r.pseudo}</td>
         <td>${montantParPersonne.toFixed(2)} €</td>
-        <td>En attente</td>
+        <td><span class="status-pill">En attente</span></td>
       </tr>
     `
     )
     .join('')
 
   container.innerHTML = `
-    <p class="tag">Split · US-04</p>
-    <h1>${outing.title}</h1>
-    <p class="intro">Drop fermé · ${inscrits} inscrit(s) · total ${outing.totalPrice} €</p>
+    <section class="page-hero">
+      <span class="tag">Split · US-04</span>
+      <h1>${outing.title}</h1>
+      <p class="intro">Drop fermé · ${inscrits} inscrit(s) · total ${outing.totalPrice} €</p>
+    </section>
 
     <article class="card split-hero">
       <p class="card-meta">Montant par personne</p>
@@ -50,16 +53,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     <article class="card">
       <h2>Détail par inscrit</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Participant</th>
-            <th>À payer</th>
-            <th>Statut</th>
-          </tr>
-        </thead>
-        <tbody>${rows || '<tr><td colspan="3">Aucun inscrit</td></tr>'}</tbody>
-      </table>
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Participant</th>
+              <th>À payer</th>
+              <th>Statut</th>
+            </tr>
+          </thead>
+          <tbody>${rows || '<tr><td colspan="3">Aucun inscrit</td></tr>'}</tbody>
+        </table>
+      </div>
     </article>
 
     <a class="btn btn-link" href="./index.html">← Retour aux sorties</a>

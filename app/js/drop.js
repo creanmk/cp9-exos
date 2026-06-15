@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (!user) return
 
   DRCommon.mountHeader()
+  DRCommon.mountFooter()
 
   const id = DRCommon.queryId()
   const outing = await DRApi.getOuting(id)
@@ -48,15 +49,27 @@ document.addEventListener('DOMContentLoaded', async () => {
   const booked = outing.maxPlaces - outing.placesLeft
 
   container.innerHTML = `
-    <p class="tag">Drop live · US-02</p>
-    <h1>${outing.title}</h1>
-    <p class="intro">${outing.totalPrice} € au total · partagés entre les inscrits après fermeture.</p>
+    <section class="page-hero">
+      <span class="tag tag-live">Drop live · US-02</span>
+      <h1>${outing.title}</h1>
+      <p class="intro">${outing.totalPrice} € au total · partagés entre les inscrits après fermeture.</p>
+    </section>
 
     <article class="card drop-live">
-      <p class="timer-label">Temps restant</p>
-      <p class="timer" id="timer">--:--</p>
-      <p class="places-left">Places restantes : <strong id="places-left">${outing.placesLeft}</strong> / ${outing.maxPlaces}</p>
-      <p class="card-meta">${booked} inscrit(s)</p>
+      <div class="drop-live-header">
+        <span class="live-pill">En direct</span>
+      </div>
+      <div class="timer-ring">
+        <div>
+          <p class="timer-label">Temps restant</p>
+          <p class="timer" id="timer">--:--</p>
+        </div>
+      </div>
+      <div class="places-block">
+        <p class="places-left">Places restantes</p>
+        <p class="places-left"><strong id="places-left">${outing.placesLeft}</strong> / ${outing.maxPlaces}</p>
+        <p class="card-meta" style="margin:0.35rem 0 0">${booked} inscrit(s) · ${outing.totalPrice} € à split</p>
+      </div>
 
       <!-- BUG-01 : bouton sans type="button" → soumet le form et recharge la page -->
       <form id="reserve-form" action="">

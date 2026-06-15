@@ -1,10 +1,18 @@
 const DRCommon = {
+  outingEmoji(title) {
+    const t = title.toLowerCase()
+    if (t.includes('laser')) return '🎯'
+    if (t.includes('bowling')) return '🎳'
+    if (t.includes('escape')) return '🔐'
+    return '🎟️'
+  },
+
   statusLabel(status) {
     const map = {
       SCHEDULED: 'Planifié',
-      DROP_OPEN: 'Drop ouvert',
+      DROP_OPEN: 'Drop live',
       FULL: 'Complet',
-      DROP_CLOSED: 'Drop fermé',
+      DROP_CLOSED: 'Terminé',
     }
     return map[status] || status
   },
@@ -19,11 +27,20 @@ const DRCommon = {
     return map[status] || 'badge-scheduled'
   },
 
-  renderHeader(active = '') {
+  renderHeader() {
     const user = DRAuth.getUser()
-    const userHtml = user
-      ? `${user.pseudo} · <a href="#" id="btn-logout">Déco</a>`
-      : `<a href="./login.html">Connexion</a>`
+    let userHtml = `<a class="btn-ghost" href="./login.html">Connexion</a>`
+
+    if (user) {
+      const initial = (user.pseudo || user.email || '?').charAt(0).toUpperCase()
+      userHtml = `
+        <span class="user-chip">
+          <span class="avatar">${initial}</span>
+          <span>${user.pseudo}</span>
+        </span>
+        <a href="#" class="btn-ghost" id="btn-logout">Déconnexion</a>
+      `
+    }
 
     return `
       <header class="site-header">
@@ -34,23 +51,40 @@ const DRCommon = {
             <span>Rush la place · Split la note</span>
           </span>
         </a>
-        <div class="user-nav">${userHtml}</div>
+        <nav class="user-nav">${userHtml}</nav>
       </header>
+    `
+  },
+
+  renderFooter() {
+    return `
+      <footer class="site-footer">
+        DropRushSplit v0.1 · recette CP9 · Données locales (localStorage)
+      </footer>
     `
   },
 
   mountHeader(containerId = 'header') {
     const el = document.getElementById(containerId)
     if (el) el.innerHTML = this.renderHeader()
-    const logout = document.getElementById('btn-logout')
-    logout?.addEventListener('click', (e) => {
+    document.getElementById('btn-logout')?.addEventListener('click', (e) => {
       e.preventDefault()
       DRAuth.logout()
       window.location.href = './index.html'
     })
   },
 
+  mountFooter(containerId = 'footer') {
+    const el = document.getElementById(containerId)
+    if (el) el.innerHTML = this.renderFooter()
+  },
+
   queryId() {
     return new URLSearchParams(window.location.search).get('id')
+  },
+
+  progressPct(booked, max) {
+    if (!max) return 0
+    return Math.min(100, Math.round((booked / max) * 100))
   },
 }

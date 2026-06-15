@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   DRCommon.mountHeader()
+  DRCommon.mountFooter()
 
   const form = document.getElementById('login-form')
   const errorEl = document.getElementById('login-error')

@@ -10,28 +10,34 @@
   <main class="wrap">
     <div id="header"></div>
 
-    <p class="tag">Auth · US-05</p>
-    <h1>Connexion</h1>
-    <p class="intro">Accédez aux drops et consultez votre split.</p>
+    <div class="auth-panel">
+      <article class="auth-card">
+        <span class="tag" style="display:table;margin:0 auto 0.5rem">Auth · US-05</span>
+        <h1>Connexion</h1>
+        <p class="intro">Accédez aux drops et consultez votre split.</p>
 
-    <div id="login-error" class="alert alert-error hidden"></div>
+        <div id="login-error" class="alert alert-error hidden"></div>
 
-    <form id="login-form">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required autocomplete="username" />
+        <form id="login-form">
+          <div class="form-group">
+            <label for="email">Adresse email</label>
+            <input type="email" id="email" name="email" placeholder="vous@exemple.fr" required autocomplete="username" />
+          </div>
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password" />
+          </div>
+          <button type="submit" class="btn btn-primary">Se connecter</button>
+        </form>
+      </article>
+
+      <div class="hint-box">
+        Participant <code>test@drs.fr</code> · Organisateur <code>orga@drs.fr</code><br/>
+        Mot de passe <code>Test1234!</code> / <code>Orga1234!</code>
       </div>
-      <div class="form-group">
-        <label for="password">Mot de passe</label>
-        <input type="password" id="password" name="password" required autocomplete="current-password" />
-      </div>
-      <button type="submit" class="btn btn-primary">Se connecter</button>
-    </form>
-
-    <div class="hint-box" style="margin-top:1rem">
-      Participant : <code>test@drs.fr</code> · Organisateur : <code>orga@drs.fr</code><br/>
-      Mot de passe : <code>Test1234!</code> / <code>Orga1234!</code>
     </div>
+
+    <div id="footer"></div>
   </main>
 
   <script src="./js/store.js"></script>
