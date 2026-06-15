@@ -7,6 +7,7 @@
 | Devinette fil rouge (J1) | [/devinette/](devinette/) |
 | Exo 1 QCM débogage | [/exo1/](exo1/) |
 | **App DR$ v0.1** | [/app/](app/) |
+| Atelier ordre des tests | [/atelier-ordre/](atelier-ordre/) |
 
 ## Publier une mise à jour
 
@@ -33,12 +34,11 @@ cp9-exos/
 │   ├── index.html
 │   ├── style.css
 │   └── script.js
-└── app/                ← fil rouge DR$ v0.1
-    ├── index.html      ← accueil
-    ├── login.html
-    ├── drop.html
-    ├── split.html
-    ├── css/drs.css
-    ├── js/
-    └── data/seed.json
+├── app/                ← fil rouge DR$ v0.1
+│   ├── index.html
+│   └── …
+└── atelier-ordre/      ← atelier 15 min ISTQB
+    ├── index.html
+    ├── style.css
+    └── script.js
 ```

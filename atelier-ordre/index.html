@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CP9 — Atelier ordre des tests</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <p class="tag">CP9 · Atelier · 15 min</p>
+      <h1>Dans quel ordre on les exécute ?</h1>
+      <p class="intro">
+        Sprint <strong>DR$</strong> — fonctionnalité « Réserver une place ».<br/>
+        Classez les 4 tests du <strong>plus proche du code</strong> au <strong>plus proche du client</strong>.
+      </p>
+    </header>
+
+    <div class="rules">
+      <p><strong>Binômes</strong> · 5 min réflexion · puis validez · correction collective 10 min</p>
+    </div>
+
+    <p class="hint">Utilisez ▲ ▼ pour réordonner · 1 = exécuté en premier</p>
+
+    <ol id="sortable" class="sortable"></ol>
+
+    <div class="actions">
+      <button type="button" id="btn-check" class="btn-primary">Valider mon ordre</button>
+      <button type="button" id="btn-reset" class="btn-secondary">Mélanger à nouveau</button>
+    </div>
+
+    <section id="result" class="result hidden" aria-live="polite"></section>
+
+    <details class="recall">
+      <summary>Rappel — 4 niveaux ISTQB</summary>
+      <ul>
+        <li><strong>Unitaire</strong> — une fonction isolée</li>
+        <li><strong>Intégration</strong> — composants ensemble (ex. front ↔ API ↔ BDD)</li>
+        <li><strong>Système</strong> — application complète sur un environnement</li>
+        <li><strong>Acceptation</strong> — le client / PO valide le besoin métier</li>
+      </ul>
+    </details>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
