@@ -9,6 +9,7 @@
 | **App DR$ v0.1** | [/app/](app/) |
 | Atelier ordre des tests | [/atelier-ordre/](atelier-ordre/) |
 | Atelier US → scénarios | [/atelier-scenarios/](atelier-scenarios/) |
+| **Livrable J1 — cas de test** | [/cas-de-test/](cas-de-test/) |
 
 ## Publier une mise à jour
 
@@ -40,7 +41,11 @@ cp9-exos/
 │   └── …
 ├── atelier-ordre/
 │   └── …
-└── atelier-scenarios/
+├── atelier-scenarios/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+└── cas-de-test/
     ├── index.html
     ├── style.css
     └── script.js

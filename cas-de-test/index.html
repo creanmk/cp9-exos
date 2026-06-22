@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cas de test DR$ — Livrable J1 · CP9</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <p class="tag">CP9 · DropRushSplit · Livrable J1</p>
+      <h1>5 cas de test structurés</h1>
+      <p class="intro">
+        Remplissez les <strong>5 cas</strong> (2 nominaux · 2 erreurs · 1 limite) puis générez l'aperçu.
+        Faites une <strong>capture d'écran</strong> du récapitulatif et envoyez-la au formateur.
+      </p>
+    </header>
+
+    <section class="panel meta-panel">
+      <h2>Identification</h2>
+      <div class="grid-2">
+        <label class="field">
+          <span>Nom / prénom (ou binôme)</span>
+          <input type="text" id="auteur-global" placeholder="Dupont Marie · ou Groupe A" />
+        </label>
+        <label class="field">
+          <span>Date</span>
+          <input type="date" id="date-global" />
+        </label>
+      </div>
+    </section>
+
+    <form id="cas-form" novalidate></form>
+
+    <div class="actions">
+      <button type="button" class="btn btn-secondary" id="btn-save">Sauvegarder brouillon</button>
+      <button type="button" class="btn" id="btn-preview">Générer l'aperçu pour capture</button>
+    </div>
+
+    <p class="hint" id="save-hint" aria-live="polite"></p>
+
+    <section id="preview" class="preview hidden" tabindex="-1">
+      <div class="preview-frame" id="preview-frame">
+        <header class="preview-header">
+          <p class="preview-tag">Livrable J1 — Cas de test DR$</p>
+          <h2 id="preview-title">…</h2>
+          <p class="preview-meta" id="preview-meta"></p>
+        </header>
+        <div id="preview-body"></div>
+        <footer class="preview-footer">
+          <p>CP9 · REAC TP-01281 · DropRushSplit (DR$)</p>
+          <p class="preview-ready">✓ Prêt à envoyer — capture d'écran de cette zone</p>
+        </footer>
+      </div>
+      <p class="capture-help">
+        <strong>Envoi :</strong> capture d'écran de la zone ci-dessus (cadre cyan) · par mail ou LMS selon consignes centre.
+      </p>
+    </section>
+  </main>
+
+  <template id="case-template">
+    <article class="panel case-panel" data-case="">
+      <div class="case-head">
+        <h2></h2>
+        <span class="type-badge"></span>
+      </div>
+
+      <div class="grid-3">
+        <label class="field">
+          <span>ID</span>
+          <input type="text" data-field="id" placeholder="TC-DRS-001" />
+        </label>
+        <label class="field">
+          <span>User Story</span>
+          <input type="text" data-field="us" placeholder="US-02" />
+        </label>
+        <label class="field">
+          <span>Priorité</span>
+          <select data-field="priorite">
+            <option value="Haute">Haute</option>
+            <option value="Moyenne">Moyenne</option>
+            <option value="Basse">Basse</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="grid-2">
+        <label class="field">
+          <span>Type</span>
+          <select data-field="type">
+            <option value="Fonctionnel">Fonctionnel</option>
+            <option value="E2E">E2E</option>
+            <option value="Limite">Limite</option>
+            <option value="Erreur">Erreur</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Intitulé</span>
+          <input type="text" data-field="intitule" placeholder="Ce qu'on teste en une phrase" />
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Préconditions</span>
+        <textarea data-field="preconditions" rows="3" placeholder="- Utilisateur connecté test@drs.fr&#10;- Drop OPEN · 3 places restantes"></textarea>
+      </label>
+
+      <div class="sub-block">
+        <h3>Données de test</h3>
+        <table class="data-table">
+          <thead>
+            <tr><th>Donnée</th><th>Valeur</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><input type="text" data-donnee="0" placeholder="Compte" /></td><td><input type="text" data-valeur="0" placeholder="test@drs.fr" /></td></tr>
+            <tr><td><input type="text" data-donnee="1" placeholder="Sortie" /></td><td><input type="text" data-valeur="1" placeholder="Laser game" /></td></tr>
+            <tr><td><input type="text" data-donnee="2" placeholder="…" /></td><td><input type="text" data-valeur="2" placeholder="…" /></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub-block">
+        <h3>Étapes</h3>
+        <table class="steps-table">
+          <thead>
+            <tr><th>#</th><th>Action</th><th>Résultat attendu</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><input type="text" data-step-action="0" placeholder="Ouvrir la page du drop" /></td>
+              <td><input type="text" data-step-result="0" placeholder="Statut OPEN visible" /></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><input type="text" data-step-action="1" placeholder="Cliquer Réserver" /></td>
+              <td><input type="text" data-step-result="1" placeholder="Message confirmation" /></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><input type="text" data-step-action="2" placeholder="…" /></td>
+              <td><input type="text" data-step-result="2" placeholder="…" /></td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><input type="text" data-step-action="3" placeholder="…" /></td>
+              <td><input type="text" data-step-result="3" placeholder="…" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <label class="field">
+        <span>Résultat global attendu</span>
+        <textarea data-field="resultat" rows="2" placeholder="Observable et mesurable — pas « ça marche »"></textarea>
+      </label>
+
+      <label class="field">
+        <span>Post-conditions</span>
+        <textarea data-field="postconditions" rows="2" placeholder="- Compteur décrémenté · user dans liste inscrits"></textarea>
+      </label>
+    </article>
+  </template>
+
+  <script src="./script.js"></script>
+</body>
+</html>
