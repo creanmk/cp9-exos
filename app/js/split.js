@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   const inscrits = outing.reservations.length
-  // BUG-04 : multiplication au lieu de division (voir devinette Q4)
   const montantParPersonne = inscrits > 0 ? outing.totalPrice * inscrits : 0
 
   const rows = outing.reservations

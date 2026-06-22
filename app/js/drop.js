@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         <p class="card-meta" style="margin:0.35rem 0 0">${booked} inscrit(s) · ${outing.totalPrice} € à split</p>
       </div>
 
-      <!-- BUG-01 : bouton sans type="button" → soumet le form et recharge la page -->
       <form id="reserve-form" action="">
         <button class="btn btn-drop" id="btn-reserve">Réserver ma place</button>
       </form>
@@ -80,26 +79,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     <div id="reserve-msg"></div>
     <a class="btn btn-link" href="./index.html">← Retour aux sorties</a>
   `
-
-  // BUG-03 : le timer reste à --:-- car drop-timer-bug.js s'exécute trop tôt.
-  // Correction : supprimer drop-timer-bug.js et appeler startTimer() ici.
-  // startTimer()
-
-  // BUG-01 : pas de type="button" → le form se soumet et recharge la page.
-  // Correction attendue : type="button" + handler ci-dessous avec e.preventDefault()
-  /*
-  const form = document.getElementById('reserve-form')
-  const msg = document.getElementById('reserve-msg')
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault()
-    const result = await DRApi.reserve(id, user)
-    if (result.ok) {
-      msg.innerHTML = '<div class="alert alert-info">Place réservée !</div>'
-      const updated = await DRApi.getOuting(id)
-      document.getElementById('places-left').textContent = updated.placesLeft
-    } else {
-      msg.innerHTML = `<div class="alert alert-error">${result.error}</div>`
-    }
-  })
-  */
 })

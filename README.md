@@ -22,6 +22,10 @@ git push origin main
 
 Pages se met à jour en ~1 min.
 
+## Corrigés formateur
+
+Les corrigés (QCM, bugs DR$, cas de test J1, ateliers) sont fournis **hors dépôt public** (document local ou LMS). Ne pas committer de dossier `solution-formateur/` dans ce repo.
+
 ## Structure
 
 ```
