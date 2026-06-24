@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   const live = outings.filter((o) => o.status === 'DROP_OPEN').length
-  const totalInscrits = outings.reduce((n, o) => n + (o.maxPlaces - o.placesLeft), 0)
+  const totalInscrits = outings.reduce((n, o) => n + o.placesLeft, 0)
 
   document.getElementById('stats-bar').innerHTML = `
     <div class="stat"><span class="stat-value">${outings.length}</span><span class="stat-label">Sorties</span></div>

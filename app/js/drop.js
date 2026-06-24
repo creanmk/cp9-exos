@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     return
   }
 
-  const booked = outing.maxPlaces - outing.placesLeft
+  const booked = outing.placesLeft
 
   container.innerHTML = `
     <section class="page-hero">
