@@ -38,6 +38,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     return
   }
 
+  if (outing.status === 'FULL') {
+    container.innerHTML = `
+      <div class="alert alert-warn">Complet — aucune place disponible.</div>
+      <a class="btn btn-secondary" href="./index.html">Retour</a>
+    `
+    return
+  }
+
   if (outing.status !== 'DROP_OPEN') {
     container.innerHTML = `
       <div class="alert alert-warn">Ce drop n'est pas ouvert (statut : ${DRCommon.statusLabel(outing.status)}).</div>
@@ -46,7 +54,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     return
   }
 
-  const booked = outing.placesLeft
+  const booked = outing.maxPlaces - outing.placesLeft
+  const alreadyRegistered = outing.reservations.some((r) => r.userId === user.id)
+  const noPlacesLeft = outing.placesLeft <= 0
 
   container.innerHTML = `
     <section class="page-hero">
@@ -71,12 +81,43 @@ document.addEventListener('DOMContentLoaded', async () => {
         <p class="card-meta" style="margin:0.35rem 0 0">${booked} inscrit(s) · ${outing.totalPrice} € à split</p>
       </div>
 
-      <form id="reserve-form" action="">
-        <button class="btn btn-drop" id="btn-reserve">Réserver ma place</button>
-      </form>
+      ${
+        alreadyRegistered
+          ? '<div class="alert alert-warn">Vous êtes déjà inscrit sur ce drop.</div>'
+          : noPlacesLeft
+            ? '<div class="alert alert-warn">Complet — aucune place disponible.</div>'
+            : `<form id="reserve-form">
+        <button type="submit" class="btn btn-drop" id="btn-reserve">Réserver ma place</button>
+      </form>`
+      }
     </article>
 
     <div id="reserve-msg"></div>
     <a class="btn btn-link" href="./index.html">← Retour aux sorties</a>
   `
+
+  const form = document.getElementById('reserve-form')
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const msgEl = document.getElementById('reserve-msg')
+      msgEl.innerHTML = ''
+
+      const result = await DRApi.reserve(id, user)
+      if (!result.ok) {
+        const messages = {
+          'Déjà inscrit': 'Vous êtes déjà inscrit sur ce drop.',
+          Complet: 'Complet — aucune place disponible.',
+          'Drop non ouvert': 'Ce drop n\'est pas ouvert.',
+        }
+        msgEl.innerHTML = `<div class="alert alert-error">${messages[result.error] || result.error}</div>`
+        return
+      }
+
+      msgEl.innerHTML = '<div class="alert alert-ok">Réservation confirmée !</div>'
+      setTimeout(() => window.location.reload(), 600)
+    })
+  }
+
+  startTimer()
 })

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DR$ — Créer une sortie</title>
+  <link rel="stylesheet" href="./css/drs.css" />
+</head>
+<body>
+  <main class="wrap">
+    <div id="header"></div>
+
+    <section class="page-hero">
+      <span class="tag">Organisateur · US-01</span>
+      <h1>Créer une sortie</h1>
+      <p class="intro">Définissez le titre, le nombre de places et le montant total à split.</p>
+    </section>
+
+    <article class="card auth-card" style="max-width:32rem">
+      <div id="create-error" class="alert alert-error hidden"></div>
+      <div id="create-success" class="alert alert-ok hidden"></div>
+
+      <form id="create-form">
+        <div class="form-group">
+          <label for="title">Titre de la sortie</label>
+          <input type="text" id="title" name="title" placeholder="Ex. Karting indoor" required />
+        </div>
+        <div class="form-group">
+          <label for="maxPlaces">Nombre de places max</label>
+          <input type="number" id="maxPlaces" name="maxPlaces" value="6" required />
+        </div>
+        <div class="form-group">
+          <label for="totalPrice">Montant total (€)</label>
+          <input type="number" id="totalPrice" name="totalPrice" step="0.01" value="100" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Créer la sortie</button>
+      </form>
+    </article>
+
+    <a class="btn btn-link" href="./index.html">← Retour aux sorties</a>
+    <div id="footer"></div>
+  </main>
+
+  <script src="./js/store.js"></script>
+  <script src="./js/api.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/create-drop.js"></script>
+</body>
+</html>

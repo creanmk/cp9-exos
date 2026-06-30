@@ -28,4 +28,12 @@ const DRApi = {
     await this.init()
     return DRStore.reserve(outingId, user)
   },
+
+  async createOuting(payload) {
+    await this.init()
+    if (!String(payload.title || '').trim()) {
+      return { ok: false, error: 'Le titre est obligatoire' }
+    }
+    return DRStore.createOuting(payload)
+  },
 }

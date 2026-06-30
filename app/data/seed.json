@@ -30,12 +30,12 @@
       "title": "Escape game",
       "totalPrice": 200,
       "maxPlaces": 8,
-      "placesLeft": 0,
+      "placesLeft": 6,
       "status": "DROP_CLOSED",
       "organizerId": 1,
       "reservations": [
         { "userId": 2, "pseudo": "Alex" },
-        { "userId": 3, "pseudo": "Obs" }
+        { "userId": 1, "pseudo": "Orga" }
       ]
     }
   ]

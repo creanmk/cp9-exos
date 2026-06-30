@@ -33,7 +33,12 @@ const DRCommon = {
 
     if (user) {
       const initial = (user.pseudo || user.email || '?').charAt(0).toUpperCase()
+      const orgaLink =
+        user.role === 'organisateur'
+          ? '<a class="btn-ghost" href="./create-drop.html">Créer une sortie</a>'
+          : ''
       userHtml = `
+        ${orgaLink}
         <span class="user-chip">
           <span class="avatar">${initial}</span>
           <span>${user.pseudo}</span>

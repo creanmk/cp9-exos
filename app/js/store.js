@@ -55,4 +55,25 @@ const DRStore = {
     this._write(data)
     return { ok: true }
   },
+
+  createOuting({ title, maxPlaces, totalPrice, organizerId }) {
+    const data = this._read()
+    const nextId = data.outings.reduce((max, o) => Math.max(max, o.id), 0) + 1
+    const max = Number(maxPlaces)
+    const price = Number(totalPrice)
+
+    data.outings.push({
+      id: nextId,
+      title: String(title || '').trim(),
+      totalPrice: Number.isFinite(price) ? price : 0,
+      maxPlaces: Number.isFinite(max) ? max : 0,
+      placesLeft: Number.isFinite(max) ? max : 0,
+      status: 'SCHEDULED',
+      organizerId,
+      reservations: [],
+    })
+
+    this._write(data)
+    return { ok: true, outingId: nextId }
+  },
 }
