@@ -1,0 +1,42 @@
+{
+  "users": [
+    { "id": 1, "email": "orga@drs.fr", "password": "Orga1234!", "pseudo": "Orga", "role": "organisateur" },
+    { "id": 2, "email": "test@drs.fr", "password": "Test1234!", "pseudo": "Alex", "role": "participant" },
+    { "id": 3, "email": "obs@drs.fr",  "password": "Obs1234!",  "pseudo": "Obs",  "role": "observateur"  }
+  ],
+  "outings": [
+    {
+      "id": 1,
+      "title": "Laser game test",
+      "totalPrice": 120,
+      "maxPlaces": 4,
+      "placesLeft": 4,
+      "status": "DROP_OPEN",
+      "organizerId": 1,
+      "reservations": []
+    },
+    {
+      "id": 2,
+      "title": "Bowling test",
+      "totalPrice": 80,
+      "maxPlaces": 6,
+      "placesLeft": 6,
+      "status": "SCHEDULED",
+      "organizerId": 1,
+      "reservations": []
+    },
+    {
+      "id": 3,
+      "title": "Escape game test",
+      "totalPrice": 200,
+      "maxPlaces": 8,
+      "placesLeft": 6,
+      "status": "DROP_CLOSED",
+      "organizerId": 1,
+      "reservations": [
+        { "userId": 2, "pseudo": "Alex" },
+        { "userId": 1, "pseudo": "Orga" }
+      ]
+    }
+  ]
+}

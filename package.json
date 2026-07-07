@@ -1,0 +1,18 @@
+{
+  "name": "cp9-exos",
+  "version": "1.0.0",
+  "description": "**Accès élèves :** https://creanmk.github.io/cp9-exos/",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^17.4.2",
+    "jest": "^30.4.2"
+  }
+}
