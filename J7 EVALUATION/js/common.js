@@ -119,4 +119,68 @@ const DRCommon = {
     if (!max) return 0
     return Math.min(100, Math.round((booked / max) * 100))
   },
+
+  renderStatsSkeleton() {
+    return `
+      <div class="stat skeleton-stat" aria-hidden="true"><span class="skeleton skeleton-stat-value"></span><span class="skeleton skeleton-stat-label"></span></div>
+      <div class="stat skeleton-stat" aria-hidden="true"><span class="skeleton skeleton-stat-value"></span><span class="skeleton skeleton-stat-label"></span></div>
+      <div class="stat skeleton-stat" aria-hidden="true"><span class="skeleton skeleton-stat-value"></span><span class="skeleton skeleton-stat-label"></span></div>
+    `
+  },
+
+  renderOutingsSkeleton(count = 3) {
+    return Array.from({ length: count }, () => `
+      <article class="outing-card skeleton-card" aria-hidden="true">
+        <div class="skeleton-card-head">
+          <span class="skeleton skeleton-icon"></span>
+          <div class="skeleton-card-titles">
+            <span class="skeleton skeleton-line skeleton-line-lg"></span>
+            <span class="skeleton skeleton-line skeleton-line-sm"></span>
+          </div>
+        </div>
+        <div class="skeleton-metrics">
+          <span class="skeleton skeleton-pill"></span>
+          <span class="skeleton skeleton-pill"></span>
+          <span class="skeleton skeleton-pill"></span>
+        </div>
+        <span class="skeleton skeleton-progress"></span>
+        <span class="skeleton skeleton-btn"></span>
+      </article>
+    `).join('')
+  },
+
+  renderDetailSkeleton(variant = 'drop') {
+    const body =
+      variant === 'split'
+        ? `
+          <article class="card skeleton-card-block">
+            <span class="skeleton skeleton-line skeleton-line-sm"></span>
+            <span class="skeleton skeleton-amount"></span>
+            <span class="skeleton skeleton-line"></span>
+          </article>
+          <article class="card skeleton-card-block">
+            <span class="skeleton skeleton-line skeleton-line-lg"></span>
+            <span class="skeleton skeleton-table"></span>
+          </article>
+        `
+        : `
+          <article class="card drop-live skeleton-card-block">
+            <span class="skeleton skeleton-pill skeleton-pill-wide"></span>
+            <span class="skeleton skeleton-timer"></span>
+            <span class="skeleton skeleton-line"></span>
+            <span class="skeleton skeleton-btn"></span>
+          </article>
+        `
+
+    return `
+      <div class="page-skeleton" aria-busy="true" aria-label="Chargement">
+        <section class="page-hero skeleton-hero">
+          <span class="skeleton skeleton-pill skeleton-pill-wide"></span>
+          <span class="skeleton skeleton-line skeleton-line-xl"></span>
+          <span class="skeleton skeleton-line skeleton-line-md"></span>
+        </section>
+        ${body}
+      </div>
+    `
+  },
 }

@@ -6,11 +6,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   DRCommon.mountFooter()
 
   const id = DRCommon.queryId()
-  const outing = await DRApi.getOuting(id)
   const container = document.getElementById('split-content')
+  container.innerHTML = DRCommon.renderDetailSkeleton('split')
+
+  const outing = await DRApi.getOuting(id)
 
   if (!outing) {
     container.innerHTML = '<div class="alert alert-error">Sortie introuvable.</div>'
+    container.removeAttribute('aria-busy')
     return
   }
 
@@ -19,6 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="alert alert-warn">Le split n'est disponible qu'après fermeture du drop.</div>
       <a class="btn btn-secondary" href="./index.html">Retour</a>
     `
+    container.removeAttribute('aria-busy')
     return
   }
 
@@ -70,4 +74,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     <a class="btn btn-link" href="./index.html">← Retour aux sorties</a>
   `
+
+  container.removeAttribute('aria-busy')
 })

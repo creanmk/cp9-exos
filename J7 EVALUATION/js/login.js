@@ -5,6 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('login-form')
   const errorEl = document.getElementById('login-error')
 
+  document.querySelectorAll('[data-demo-email]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      form.email.value = btn.dataset.demoEmail
+      form.password.value = btn.dataset.demoPassword
+      errorEl.classList.add('hidden')
+      form.email.focus()
+    })
+  })
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault()
     errorEl.classList.add('hidden')

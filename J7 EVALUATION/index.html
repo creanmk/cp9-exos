@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DropRushSplit (DR$) — sorties à venir · recette CP9 J7 · drops live et split de note." />
   <title>DR$ — Sorties</title>
+  <link rel="icon" href="./assets/drs-logo.png" type="image/png" />
   <link rel="stylesheet" href="./css/drs.css" />
 </head>
 <body>
@@ -16,13 +18,8 @@
       <p class="intro">Réservez votre place pendant le drop · consultez le split après fermeture.</p>
     </section>
 
-    <div id="stats-bar" class="stats-bar"></div>
-    <div id="outings-list"></div>
-
-    <div class="hint-box">
-      Comptes démo · Participant <code>test@drs.fr</code> / <code>Test1234!</code> ·
-      Organisateur <code>orga@drs.fr</code> / <code>Orga1234!</code>
-    </div>
+    <div id="stats-bar" class="stats-bar" aria-busy="true" aria-label="Chargement des statistiques"></div>
+    <div id="outings-list" aria-busy="true" aria-label="Chargement des sorties"></div>
 
     <div id="footer"></div>
   </main>

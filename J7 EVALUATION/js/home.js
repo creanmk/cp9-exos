@@ -2,11 +2,22 @@ document.addEventListener('DOMContentLoaded', async () => {
   DRCommon.mountHeader()
   DRCommon.mountFooter()
 
+  const statsBar = document.getElementById('stats-bar')
   const list = document.getElementById('outings-list')
+  statsBar.innerHTML = DRCommon.renderStatsSkeleton()
+  list.innerHTML = DRCommon.renderOutingsSkeleton()
+
   const outings = await DRApi.getOutings()
 
   if (!outings.length) {
+    statsBar.innerHTML = `
+      <div class="stat"><span class="stat-value">0</span><span class="stat-label">Sorties</span></div>
+      <div class="stat"><span class="stat-value">0</span><span class="stat-label">Drops live</span></div>
+      <div class="stat"><span class="stat-value">0</span><span class="stat-label">Inscrits</span></div>
+    `
     list.innerHTML = '<p class="intro">Aucune sortie pour le moment.</p>'
+    statsBar.removeAttribute('aria-busy')
+    list.removeAttribute('aria-busy')
     return
   }
 
@@ -69,4 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       `
     })
     .join('')
+
+  statsBar.removeAttribute('aria-busy')
+  list.removeAttribute('aria-busy')
 })

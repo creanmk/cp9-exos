@@ -25,16 +25,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   DRCommon.mountFooter()
 
   const id = DRCommon.queryId()
-  const outing = await DRApi.getOuting(id)
   const container = document.getElementById('drop-content')
+  container.innerHTML = DRCommon.renderDetailSkeleton('drop')
+
+  const outing = await DRApi.getOuting(id)
 
   if (!outing) {
     container.innerHTML = '<div class="alert alert-error">Sortie introuvable.</div>'
+    container.removeAttribute('aria-busy')
     return
   }
 
   if (user.role === 'observateur') {
     container.innerHTML = '<div class="alert alert-warn">Les observateurs ne peuvent pas réserver.</div>'
+    container.removeAttribute('aria-busy')
     return
   }
 
@@ -43,6 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="alert alert-warn">Complet — aucune place disponible.</div>
       <a class="btn btn-secondary" href="./index.html">Retour</a>
     `
+    container.removeAttribute('aria-busy')
     return
   }
 
@@ -51,6 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="alert alert-warn">Ce drop n'est pas ouvert (statut : ${DRCommon.statusLabel(outing.status)}).</div>
       <a class="btn btn-secondary" href="./index.html">Retour</a>
     `
+    container.removeAttribute('aria-busy')
     return
   }
 
@@ -103,6 +109,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     <div id="reserve-msg"></div>
     <a class="btn btn-link" href="./index.html">← Retour aux sorties</a>
   `
+
+  container.removeAttribute('aria-busy')
 
   const form = document.getElementById('reserve-form')
   if (form) {
