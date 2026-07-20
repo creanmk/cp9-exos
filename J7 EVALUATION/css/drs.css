@@ -836,6 +836,12 @@ a:hover {
   outline-offset: 2px;
 }
 
+.title-unset {
+  color: var(--text-dim);
+  font-style: italic;
+  font-weight: 600;
+}
+
 .hint-box {
   margin-top: 1.5rem;
   padding: 0.9rem 1rem;

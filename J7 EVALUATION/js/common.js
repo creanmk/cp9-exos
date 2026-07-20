@@ -12,6 +12,12 @@ const DRCommon = {
     return this.outingIconCode(title)
   },
 
+  displayOutingTitle(title) {
+    const value = title != null ? String(title).trim() : ''
+    if (!value) return '<span class="title-unset">(Sans titre)</span>'
+    return String(title)
+  },
+
   statusLabel(status) {
     const map = {
       SCHEDULED: 'Planifié',

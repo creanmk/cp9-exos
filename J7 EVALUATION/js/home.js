@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div class="card-icon-title">
               <span class="outing-icon" aria-hidden="true">${DRCommon.outingIconCode(o.title)}</span>
               <div>
-                <h2>${o.title}</h2>
+                <h2>${DRCommon.displayOutingTitle(o.title)}</h2>
                 <p class="card-sub">Promo CDA · Organisateur Orga</p>
               </div>
             </div>

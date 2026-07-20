@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   container.innerHTML = `
     <section class="page-hero">
       <span class="tag">Split · US-04</span>
-      <h1>${outing.title}</h1>
+      <h1>${DRCommon.displayOutingTitle(outing.title)}</h1>
       <p class="intro">Drop fermé · ${inscrits} inscrit(s) · total ${outing.totalPrice} €</p>
     </section>
 

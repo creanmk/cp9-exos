@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   container.innerHTML = `
     <section class="page-hero">
       <span class="tag tag-live">Drop live · US-02</span>
-      <h1>${outing.title}</h1>
+      <h1>${DRCommon.displayOutingTitle(outing.title)}</h1>
       <p class="intro">${outing.totalPrice} € au total · partagés entre les inscrits après fermeture.</p>
     </section>
 
