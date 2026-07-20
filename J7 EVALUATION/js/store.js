@@ -48,7 +48,8 @@ const DRStore = {
 
     outing.reservations.push({ userId: user.id, pseudo: user.pseudo })
     outing.placesLeft -= 1
-    if (outing.placesLeft === 0) outing.status = 'FULL'
+    // N-04 : pas de passage auto en FULL — permet sur-réservation si page non rechargée
+    // if (outing.placesLeft === 0) outing.status = 'FULL'
 
     this._write(data)
     return { ok: true }
