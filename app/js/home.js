@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       let action = ''
 
       if (isLive || o.status === 'FULL') {
-        action = `<a class="btn btn-primary" href="./drop.html?id=${o.id}">⚡ Rejoindre le drop</a>`
+        action = `<a class="btn btn-primary" href="./drop.html?id=${o.id}">Rejoindre le drop</a>`
       } else if (o.status === 'DROP_CLOSED') {
         action = `<a class="btn btn-secondary" href="./split.html?id=${o.id}">Voir le split →</a>`
       } else {
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <article class="outing-card ${isLive ? 'is-live' : ''}">
           <div class="card-head">
             <div class="card-icon-title">
-              <span class="outing-icon">${DRCommon.outingEmoji(o.title)}</span>
+              <span class="outing-icon" aria-hidden="true">${DRCommon.outingIconCode(o.title)}</span>
               <div>
                 <h2>${o.title}</h2>
                 <p class="card-sub">Promo CDA · Organisateur Orga</p>
@@ -47,9 +47,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             <span class="badge ${DRCommon.statusClass(o.status)}">${DRCommon.statusLabel(o.status)}</span>
           </div>
           <div class="card-metrics">
-            <span class="metric">💶 <strong>${o.totalPrice} €</strong> total</span>
-            <span class="metric">👥 <strong>${booked}/${o.maxPlaces}</strong> inscrits</span>
-            <span class="metric">📊 <strong>${o.placesLeft}</strong> places restantes</span>
+            <span class="metric"><span class="metric-label">Total</span> <strong>${o.totalPrice} €</strong></span>
+            <span class="metric"><span class="metric-label">Inscrits</span> <strong>${booked}/${o.maxPlaces}</strong></span>
+            <span class="metric"><span class="metric-label">Places rest.</span> <strong>${o.placesLeft}</strong></span>
           </div>
           <div class="progress-wrap">
             <div class="progress-label">

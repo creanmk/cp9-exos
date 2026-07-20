@@ -1,10 +1,10 @@
 const DRCommon = {
-  outingEmoji(title) {
+  outingIconCode(title) {
     const t = title.toLowerCase()
-    if (t.includes('laser')) return '🎯'
-    if (t.includes('bowling')) return '🎳'
-    if (t.includes('escape')) return '🔐'
-    return '🎟️'
+    if (t.includes('laser')) return 'LG'
+    if (t.includes('bowling')) return 'BW'
+    if (t.includes('escape')) return 'EG'
+    return 'DR'
   },
 
   statusLabel(status) {
