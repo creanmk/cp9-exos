@@ -69,9 +69,22 @@ const DRCommon = {
   renderFooter() {
     return `
       <footer class="site-footer">
-        DropRushSplit J7 · recette CP9 · Données locales (localStorage)
+        <p class="site-footer-meta">DropRushSplit · version recette J7 · CP9 · données locales (localStorage)</p>
+        <p class="site-footer-actions">
+          <button type="button" class="btn-reset-data" id="btn-reset-data">Réinitialiser les données</button>
+        </p>
       </footer>
     `
+  },
+
+  resetAppData() {
+    const ok = window.confirm(
+      'Réinitialiser toutes les données locales de DR$ ?\n\nLes sorties, réservations et session seront effacées. Cette action est irréversible.'
+    )
+    if (!ok) return
+    if (typeof DRStore !== 'undefined' && DRStore.reset) DRStore.reset()
+    sessionStorage.clear()
+    window.location.href = './index.html'
   },
 
   mountHeader(containerId = 'header') {
@@ -87,6 +100,9 @@ const DRCommon = {
   mountFooter(containerId = 'footer') {
     const el = document.getElementById(containerId)
     if (el) el.innerHTML = this.renderFooter()
+    document.getElementById('btn-reset-data')?.addEventListener('click', () => {
+      this.resetAppData()
+    })
   },
 
   queryId() {
