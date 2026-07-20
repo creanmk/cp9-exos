@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   const live = outings.filter((o) => o.status === 'DROP_OPEN').length
-  const totalInscrits = outings.reduce((n, o) => n + o.reservations.length, 0)
+  const totalInscrits = outings.reduce(
+    (n, o) => n + (Array.isArray(o.reservations) ? o.reservations.length : 0),
+    0
+  )
 
   document.getElementById('stats-bar').innerHTML = `
     <div class="stat"><span class="stat-value">${outings.length}</span><span class="stat-label">Sorties</span></div>
@@ -21,7 +24,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   list.innerHTML = outings
     .map((o) => {
-      const booked = o.reservations.length
+      const reservations = Array.isArray(o.reservations) ? o.reservations : []
+      const booked = reservations.length
       const pct = DRCommon.progressPct(booked, o.maxPlaces)
       const isLive = o.status === 'DROP_OPEN'
       let action = ''

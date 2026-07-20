@@ -27,7 +27,14 @@ const DRStore = {
   },
 
   getOutings() {
-    return this._read().outings || []
+    return (this._read().outings || []).map((o) => ({
+      ...o,
+      title: o.title != null ? String(o.title) : '',
+      reservations: Array.isArray(o.reservations) ? o.reservations : [],
+      maxPlaces: Number(o.maxPlaces) || 0,
+      placesLeft: Number(o.placesLeft) || 0,
+      totalPrice: Number(o.totalPrice) || 0,
+    }))
   },
 
   getOuting(id) {
