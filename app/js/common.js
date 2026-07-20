@@ -54,7 +54,7 @@ const DRCommon = {
     return `
       <header class="site-header">
         <a class="brand" href="./index.html">
-          <span class="brand-mark">DR$</span>
+          <img class="brand-logo" src="./assets/drs-logo.png" alt="DropRushSplit — DR$" width="88" height="40" />
           <span class="brand-text">
             <strong>DropRushSplit</strong>
             <span>Rush la place · Split la note</span>

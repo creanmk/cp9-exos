@@ -91,6 +91,13 @@ a:hover {
   color: inherit;
 }
 
+.brand-logo {
+  display: block;
+  height: 2.35rem;
+  width: auto;
+  flex-shrink: 0;
+}
+
 .brand-mark {
   display: inline-flex;
   align-items: center;
